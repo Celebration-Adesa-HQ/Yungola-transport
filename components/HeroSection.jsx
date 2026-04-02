@@ -46,27 +46,31 @@ export const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl md:text-6xl font-bold text-amber-900 mb-6">
-              Own Your Vehicle Today
+              <h1 className="mb-3 inline-flex rounded-full bg-amber-900 px-4 py-1 text-sm font-medium text-yellow-100">
+              Yungola Transport
             </h1>
+            <h2 className="text-4xl md:text-6xl font-bold text-amber-900 mb-6">
+              Affordable vehicle ownership for hardworking drivers
+            </h2>
             <p className="text-lg text-amber-800 mb-8">
-              Yungola Transport makes vehicle ownership easy with flexible
-              higher purchase financing. Drive your dream car, bike, or kekke
-              now.
+              Small transport company helping operators in Ibadan and Lagos
+              purchase keke, bike, and Corolla car options through a flexible
+              hire purchase model.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => navigateTo("vehicles")}
+              <Link
+                href="/vehicles"
                 className="bg-amber-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-amber-800 transition-colors flex items-center"
               >
                 View Vehicles <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button
-                onClick={() => navigateTo("schedule")}
+              </Link>
+
+              <Link
+                href="/schedule"
                 className="bg-white text-amber-900 px-8 py-4 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
               >
                 Schedule Visit
-              </button>
+              </Link>
             </div>
           </div>
           <div className="hidden md:block">
