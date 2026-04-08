@@ -10,24 +10,21 @@ const vehicles = [
     name: "Keke (Tricycle)",
     desc: "Perfect for commercial transport in busy cities",
     price: "₦850,000",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400&h=250",
+    image: "/vehicles/keke-yungola.png",
   },
   {
     icon: Bike,
     name: "Motorcycle",
     desc: "Fast, affordable and easy to maintain",
     price: "₦350,000",
-    image:
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=400&h=250",
+    image: "/vehicles/motocycle-yungola.png",
   },
   {
     icon: Car,
     name: "Toyota Corolla",
     desc: "Reliable sedan for ride-hailing and personal use",
     price: "₦4,500,000",
-    image:
-      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=400&h=250",
+    image: "/vehicles/corolla-yungola.png",
   },
 ];
 
@@ -49,13 +46,16 @@ export default function VehiclesSection() {
               key={v.name}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
-              <Image
-                src={v.image}
-                alt={v.name}
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                width={800}
-height={400}
-              />
+                 <Link key={v.name} href="/vehicles" className="block">
+              <div className="relative h-48 bg-amber-100 ">
+                <Image
+                  src={v.image}
+                  alt={v.name}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={800}
+                  height={400}
+                />
+              </div>
 
               <div className="p-6">
                 <div className="flex items-center mb-2">
@@ -73,6 +73,7 @@ height={400}
                   Explore <ChevronRight className="h-5 w-5 ml-1" />
                 </div>
               </div>
+          </Link>
             </div>
           ))}
         </div>

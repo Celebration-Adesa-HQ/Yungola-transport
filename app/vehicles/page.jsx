@@ -4,27 +4,29 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Bike, Car, Calculator, CheckCircle, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const vehicleData = [
   {
     icon: Bike,
     type: "Motorcycle",
     slug: "motorcycle",
+    image: "/vehicles/motocycle-yungola.png",
     brands: [
       {
         name: "Bajaj Boxer",
         price: 1300000,
-        image: "/vehicles/bajaj-boxer.jpg",
+        image: "/vehicles/motocycle-yungola.png",
       },
       {
         name: "Honda Ace",
         price: 1450000,
-        image: "/vehicles/honda-ace.jpg",
+        image: "/vehicles/honda-ace-motocyle-yungola.png",
       },
       {
         name: "TVS HLX",
         price: 1500000,
-        image: "/vehicles/tvs-hlx.jpg",
+        image: "/vehicles/tvs-hlx-motocycle-yungola.png",
       },
     ],
     upfrontFrom: "₦80,000",
@@ -42,22 +44,23 @@ const vehicleData = [
   {
     icon: Truck,
     type: "Tricycle (Keke)",
+    image: "/vehicles/keke-yungola.png",
     slug: "tricycle",
     brands: [
       {
         name: "TVS King",
         price: 4500000,
-        image: "/vehicles/tvs-king.jpg",
+        image: "/vehicles/keke-yungola.png",
       },
       {
         name: "Bajaj RE",
         price: 4300000,
-        image: "/vehicles/bajaj-re.jpg",
+        image: "/vehicles/bajaj-re-motocycle-yungola.png",
       },
       {
         name: "Piaggio Ape",
         price: 4700000,
-        image: "/vehicles/piaggio-ape.jpg",
+        image: "/vehicles/piaggio-ape-keke-yungola.png",
       },
     ],
     upfrontFrom: "₦500,000",
@@ -76,11 +79,12 @@ const vehicleData = [
     icon: Car,
     type: "Toyota Corolla (2010)",
     slug: "car",
+    image: "/vehicles/corolla-yungola.png",
     brands: [
       {
         name: "Toyota Corolla",
         price: 9500000,
-        image: "/vehicles/toyota-corolla.jpg",
+        image: "/vehicles/corolla-yungola.png",
       },
     ],
     upfrontFrom: "₦800,000",
@@ -197,10 +201,7 @@ export default function VehiclesPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button
-                asChild
-                variant="outline"
-              >
+              <Button asChild variant="outline">
                 <Link href="/schedule">Apply Now</Link>
               </Button>
             </div>
@@ -358,7 +359,17 @@ export default function VehiclesPage() {
                     >
                       <div className="flex items-center">
                         <div className="flex h-28 w-32 items-center justify-center bg-amber-100 text-amber-700">
-                          <Car className="h-10 w-10" />
+                          {vehicle.image ? (
+                            <Image 
+                              src={vehicle.image}
+                              alt={vehicle.name}
+                              width={120}
+                              height={90}
+                              className="object-cover"
+                            />
+                          ) : (
+                            <Car className="h-12 w-12" />
+                          )}
                         </div>
 
                         <div className="flex-1 p-4">
@@ -533,7 +544,17 @@ export default function VehiclesPage() {
               className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50 shadow-sm md:flex"
             >
               <div className="flex items-center justify-center bg-amber-100 p-10 md:w-72">
-                <vehicle.icon className="h-24 w-24 text-amber-900" />
+                {vehicle.image ? (
+                  <Image
+                    src={vehicle.image}
+                    alt={vehicle.type}
+                    width={200}
+                    height={150}
+                    className="rounded-lg object-cover"
+                  />
+                ) : (
+                  <vehicle.icon className="h-24 w-24 text-amber-900" />
+                )}
               </div>
 
               <div className="flex-1 p-8">

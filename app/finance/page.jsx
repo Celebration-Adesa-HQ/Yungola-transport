@@ -180,7 +180,8 @@ export default function FinancePage() {
                   Submit Request
                 </h3>
                 <p className="text-sm text-amber-600">
-                  Enter your vehicle details, repair cost, and financing request.
+                  Enter your vehicle details, repair cost, and financing
+                  request.
                 </p>
               </div>
 
@@ -192,7 +193,8 @@ export default function FinancePage() {
                   Get Reviewed
                 </h3>
                 <p className="text-sm text-amber-600">
-                  Our team reviews your application and confirms repayment terms.
+                  Our team reviews your application and confirms repayment
+                  terms.
                 </p>
               </div>
 
@@ -204,7 +206,8 @@ export default function FinancePage() {
                   Repair and Repay
                 </h3>
                 <p className="text-sm text-amber-600">
-                  Fix your vehicle and repay in monthly instalments over your selected duration.
+                  Fix your vehicle and repay in monthly instalments over your
+                  selected duration.
                 </p>
               </div>
             </div>
@@ -236,13 +239,31 @@ export default function FinancePage() {
                       setRepairForm({ ...repairForm, vehicleType: value })
                     }
                   >
-                    <SelectTrigger className="border-amber-200 focus:ring-yellow-500">
-                      <SelectValue placeholder="Select vehicle type" />
+                    <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500">
+                      <SelectValue
+                        placeholder="Select vehicle type"
+                        className="text-black"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="tricycle">Tricycle (Keke)</SelectItem>
-                      <SelectItem value="motorcycle">Motorcycle</SelectItem>
-                      <SelectItem value="car">Car</SelectItem>
+                    <SelectContent className="bg-white text-black">
+                      <SelectItem
+                        value="tricycle"
+                        className="text-black hover:bg-yellow-300"
+                      >
+                        Tricycle (Keke)
+                      </SelectItem>
+                      <SelectItem
+                        value="motorcycle"
+                        className="text-black hover:bg-yellow-300"
+                      >
+                        Motorcycle
+                      </SelectItem>
+                      <SelectItem
+                        value="car"
+                        className="text-black hover:bg-yellow-300"
+                      >
+                        Car
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -261,7 +282,7 @@ export default function FinancePage() {
                       })
                     }
                     placeholder="e.g. 50000"
-                    className="border-amber-200 focus-visible:ring-yellow-500"
+                    className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                   />
                 </div>
 
@@ -429,7 +450,7 @@ export default function FinancePage() {
                         })
                       }
                       placeholder="Enter your full name"
-                      className="border-amber-200 focus-visible:ring-yellow-500"
+                      className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                     />
                   </div>
 
@@ -449,7 +470,7 @@ export default function FinancePage() {
                           })
                         }
                         placeholder="your@email.com"
-                        className="border-amber-200 focus-visible:ring-yellow-500"
+                        className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                       />
                     </div>
 
@@ -467,7 +488,7 @@ export default function FinancePage() {
                           })
                         }
                         placeholder="+234 XXX XXX XXXX"
-                        className="border-amber-200 focus-visible:ring-yellow-500"
+                        className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                       />
                     </div>
                   </div>
@@ -486,15 +507,28 @@ export default function FinancePage() {
                           })
                         }
                       >
-                        <SelectTrigger className="border-amber-200 focus:ring-yellow-500">
+                        <SelectTrigger className="border-amber-200 focus:ring-yellow-500 text-black">
                           <SelectValue placeholder="Select vehicle" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="motorcycle">Motorcycle</SelectItem>
-                          <SelectItem value="tricycle">
+                        <SelectContent className="bg-white text-black">
+                          <SelectItem
+                            value="motorcycle"
+                            className="text-black hover:bg-yellow-300"
+                          >
+                            Motorcycle
+                          </SelectItem>
+                          <SelectItem
+                            value="tricycle"
+                            className="text-black hover:bg-yellow-300"
+                          >
                             Tricycle (Keke)
                           </SelectItem>
-                          <SelectItem value="car">Car</SelectItem>
+                          <SelectItem
+                            value="car"
+                            className="text-black hover:bg-yellow-300"
+                          >
+                            Car
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -514,7 +548,7 @@ export default function FinancePage() {
                           })
                         }
                         placeholder="e.g. 50000"
-                        className="border-amber-200 focus-visible:ring-yellow-500"
+                        className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                       />
                     </div>
                   </div>
@@ -532,13 +566,31 @@ export default function FinancePage() {
                         })
                       }
                     >
-                      <SelectTrigger className="border-amber-200 focus:ring-yellow-500">
-                        <SelectValue placeholder="Select duration" />
+                      <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500 ">
+                        <SelectValue
+                          placeholder="Select duration"
+                          className="text-black"
+                        />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="3">3 months</SelectItem>
-                        <SelectItem value="6">6 months</SelectItem>
-                        <SelectItem value="12">12 months</SelectItem>
+                      <SelectContent className="bg-white text-black">
+                        <SelectItem
+                          value="3"
+                          className="text-black hover:bg-yellow-300"
+                        >
+                          3 months
+                        </SelectItem>
+                        <SelectItem
+                          value="6"
+                          className="text-black hover:bg-yellow-300"
+                        >
+                          6 months
+                        </SelectItem>
+                        <SelectItem
+                          value="12"
+                          className="text-black hover:bg-yellow-300"
+                        >
+                          12 months
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -558,7 +610,7 @@ export default function FinancePage() {
                           description: e.target.value,
                         })
                       }
-                      className="border-amber-200 focus-visible:ring-yellow-500"
+                      className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                     />
                   </div>
 

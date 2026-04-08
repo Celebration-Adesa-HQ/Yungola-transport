@@ -1,21 +1,25 @@
 "use client";
 
 import { Briefcase, ShieldCheck, Users, User } from "lucide-react";
+import Image from "next/image";
 
 const teamMembers = [
   {
     name: "Okanlawon Olatunde",
-    role: "Managing Director",
+    role: "CEO/Founder of Yungola transport",
+    image: "/team/ceo-of-yungola.jpg",
     bio: "Leads Yungola’s vision for making vehicle ownership and transport support more accessible, practical, and reliable for everyday customers.",
   },
   {
     name: "Ojo Oluwaseun",
+    image: "/team/VP Operations.jpg",
     role: "VP Operations",
     bio: "Oversees daily operations, service coordination, and internal processes to ensure customers receive smooth and timely support.",
   },
   {
     name: "Olawole Olamide",
     role: "Office Manager",
+    image: "/team/Yungola Office Manager.jpg",
     bio: "Manages office administration, client coordination, and front-facing support that keeps the team responsive and organised.",
   },
 ];
@@ -123,8 +127,17 @@ export default function TeamPage() {
                 key={member.name}
                 className="group rounded-2xl border border-amber-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-amber-100">
-                  <User className="h-12 w-12 text-amber-700" />
+                <div className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-amber-100">
+                  {member.image ? (
+                    <Image 
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="h-24 w-24 rounded-full object-cover"
+                    />
+                  ) : (
+                    <User className="h-12 w-12 text-amber-700" />
+                  )}
                 </div>
 
                 <h3 className="text-xl font-bold text-gray-900">

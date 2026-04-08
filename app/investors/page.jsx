@@ -123,11 +123,11 @@ export default function InvestorsPage() {
               </Button>
 
               <a
-                href="mailto:investors@yungola.ng"
+                href="mailto:contact@yungolatransport.com"
                 className="inline-flex items-center rounded-lg border border-white px-5 py-3 font-medium text-white transition-colors hover:bg-white hover:text-amber-900"
               >
                 <Mail className="mr-2 h-5 w-5" />
-                investors@yungola.ng
+                contact@yungolatransport.com
               </a>
             </div>
           </div>
@@ -326,19 +326,19 @@ export default function InvestorsPage() {
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:investors@yungola.ng"
+                href="mailto:contact@yungolatransport.com"
                 className="inline-flex items-center rounded-lg bg-yellow-500 px-6 py-4 font-semibold text-amber-900 transition-colors hover:bg-yellow-400"
               >
                 <Mail className="mr-2 h-5 w-5" />
-                investors@yungola.ng
+                contact@yungolatransport.com
               </a>
 
               <a
-                href="tel:+234800YUNGOLA"
+                href="tel:+2349071518988 "
                 className="inline-flex items-center rounded-lg bg-white px-6 py-4 font-semibold text-amber-900 transition-colors hover:bg-amber-50"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                +234 800 YUNGOLA
+                +234 907 1518 988 YUNGOLA
               </a>
             </div>
           </div>

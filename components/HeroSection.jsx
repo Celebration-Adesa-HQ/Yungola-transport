@@ -42,7 +42,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 py-20">
+    <section className="bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>

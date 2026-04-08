@@ -29,17 +29,17 @@ import {
 import { cn } from "@/lib/utils";
 
 const offices = [
-  {
-    id: "ibadan",
-    name: "Ibadan Office",
-    address: "123, Ring Road, Challenge, Ibadan, Oyo State",
-    phone: "+234 800 YUNGOLA",
-  },
+  // {
+  //   id: "ibadan",
+  //   name: "Ibadan Office",
+  //   address: "123, Ring Road, Challenge, Ibadan, Oyo State",
+  //   phone: "+234 800 YUNGOLA",
+  // },
   {
     id: "lagos",
     name: "Lagos Office",
-    address: "45, Oshodi-Apapa Expressway, Isolo, Lagos State",
-    phone: "+234 801 YUNGOLA",
+    address: "5, Ayanleye Street, Ogba, Lagos State",
+    phone: "+234 907 1518 988 YUNGOLA",
   },
 ];
 
@@ -167,9 +167,7 @@ export default function SchedulePage() {
                   </div>
 
                   <p className="text-sm leading-6 text-amber-700">
-                    Monday to Friday: 8:00 AM to 6:00 PM
-                    <br />
-                    Saturday: 9:00 AM to 5:00 PM
+                    Monday to Saturday: 9:00 AM to 5:00 PM
                     <br />
                     Sunday: Closed
                   </p>
@@ -325,14 +323,14 @@ export default function SchedulePage() {
                             })
                           }
                         >
-                          <SelectTrigger className="border-amber-200 focus:ring-yellow-500 text-amber-900">
+                          <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500">
                             <SelectValue placeholder="Select location" />
                           </SelectTrigger>
 
-                          <SelectContent className="bg-white shadow-md rounded-md">
+                          <SelectContent className="">
                             <SelectItem
                               value="ibadan"
-                              className="text-amber-900 hover:bg-amber-100"
+                              className="text-amber-900 hover:bg-amber-100 "
                             >
                               Ibadan Office
                             </SelectItem>
@@ -361,17 +359,28 @@ export default function SchedulePage() {
                             })
                           }
                         >
-                          <SelectTrigger className="border-amber-200 focus:ring-yellow-500">
+                          <SelectTrigger className="border-amber-200 focus:ring-yellow-500 text-black">
                             <SelectValue placeholder="Select vehicle type" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="tricycle">
+                            <SelectItem
+                              value="tricycle"
+                              className="text-amber-900 hover:bg-amber-100"
+                            >
                               Tricycle (Keke)
                             </SelectItem>
-                            <SelectItem value="motorcycle">
+                            <SelectItem
+                              value="motorcycle"
+                              className="text-amber-900 hover:bg-amber-100"
+                            >
                               Motorcycle
                             </SelectItem>
-                            <SelectItem value="car">Car (Corolla)</SelectItem>
+                            <SelectItem
+                              value="car"
+                              className="text-amber-900 hover:bg-amber-100"
+                            >
+                              Car (Corolla)
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -389,6 +398,7 @@ export default function SchedulePage() {
                               className={cn(
                                 "w-full justify-start border-amber-200 text-left font-normal hover:bg-amber-50",
                                 !date && "text-muted-foreground",
+                                "text-black",
                               )}
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
@@ -396,14 +406,17 @@ export default function SchedulePage() {
                             </Button>
                           </PopoverTrigger>
 
-                          <PopoverContent className="w-auto p-0" align="start">
+                          <PopoverContent
+                            className="w-auto p-0 text-black"
+                            align="start"
+                          >
                             <Calendar
                               mode="single"
                               selected={date}
                               onSelect={setDate}
-                              disabled={(d) => isSunday(d) || d < today}
+                              disabled={(d) => isSunday(d) || d < new Date()}
                               initialFocus
-                              className="p-3"
+                              className={cn("p-3 pointer-events-auto")}
                             />
                           </PopoverContent>
                         </Popover>
@@ -423,12 +436,16 @@ export default function SchedulePage() {
                           })
                         }
                       >
-                        <SelectTrigger className="border-amber-200 focus:ring-yellow-500">
+                        <SelectTrigger className="border-amber-200 focus:ring-yellow-500 text-black">
                           <SelectValue placeholder="Choose a time" />
                         </SelectTrigger>
                         <SelectContent>
                           {timeSlots.map((slot) => (
-                            <SelectItem key={slot} value={slot}>
+                            <SelectItem
+                              key={slot}
+                              value={slot}
+                              className="text-amber-900 hover:bg-amber-100"
+                            >
                               {slot}
                             </SelectItem>
                           ))}
