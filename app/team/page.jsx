@@ -1,8 +1,8 @@
-"use client";
-
+import { generateSEO } from "@/lib/seo";
 import { Briefcase, ShieldCheck, Users, User } from "lucide-react";
 import Image from "next/image";
 
+// Team members and values stay the same
 const teamMembers = [
   {
     name: "Okanlawon Olatunde",
@@ -12,8 +12,8 @@ const teamMembers = [
   },
   {
     name: "Ojo Oluwaseun",
-    image: "/team/VP Operations.jpg",
     role: "VP Operations",
+    image: "/team/VP Operations.jpg",
     bio: "Oversees daily operations, service coordination, and internal processes to ensure customers receive smooth and timely support.",
   },
   {
@@ -45,12 +45,34 @@ const values = [
   },
 ];
 
+// SEO for this page
+export const metadata = generateSEO({
+  title: "Meet the Team | Yungola Transport",
+  description:
+    "Discover the leadership and team behind Yungola Transport. Our dedicated professionals ensure smooth, reliable vehicle hire and customer support in Lagos.",
+  keywords: [
+    "Yungola Transport team",
+    "car hire Lagos",
+    "leadership",
+    "vehicle rental Nigeria",
+  ],
+  url: "https://yungolatransport.com/team",
+});
+
 export default function TeamPage() {
   return (
     <div className="min-h-screen bg-amber-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-900 via-amber-800 to-yellow-600 text-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <section className="relative text-white overflow-hidden">
+        <Image
+          src="/Yungola mockup.jpg"
+          alt="Background"
+          fill
+          priority
+          className="object-cover object-center z-0"
+        />
+        <div className="absolute inset-0 bg-linear-to-br from-amber-900/90 via-amber-800/80 to-yellow-600/70 z-10" />
+        <div className="relative z-20 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="mb-3 inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-yellow-100">
               Meet the Team
@@ -67,7 +89,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Intro / Values */}
+      {/* Values */}
       <section className="bg-white py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
@@ -76,16 +98,12 @@ export default function TeamPage() {
             </h2>
             <p className="mt-3 text-gray-600">
               Our team combines leadership, operations, and customer support to
-              help people move forward with confidence. We are focused on clear
-              processes, responsive communication, and dependable service at
-              every stage.
+              help people move forward with confidence.
             </p>
           </div>
-
           <div className="grid gap-6 md:grid-cols-3">
             {values.map((value) => {
               const Icon = value.icon;
-
               return (
                 <div
                   key={value.title}
@@ -94,7 +112,6 @@ export default function TeamPage() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
                     <Icon className="h-6 w-6 text-yellow-700" />
                   </div>
-
                   <h3 className="text-lg font-bold text-amber-900">
                     {value.title}
                   </h3>
@@ -120,7 +137,6 @@ export default function TeamPage() {
               long-term growth.
             </p>
           </div>
-
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
               <div
@@ -129,7 +145,7 @@ export default function TeamPage() {
               >
                 <div className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-amber-100">
                   {member.image ? (
-                    <Image 
+                    <Image
                       src={member.image}
                       alt={member.name}
                       fill
@@ -139,15 +155,12 @@ export default function TeamPage() {
                     <User className="h-12 w-12 text-amber-700" />
                   )}
                 </div>
-
                 <h3 className="text-xl font-bold text-gray-900">
                   {member.name}
                 </h3>
-
                 <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-yellow-700">
                   {member.role}
                 </p>
-
                 <p className="mt-4 text-sm leading-6 text-gray-600">
                   {member.bio}
                 </p>

@@ -42,21 +42,38 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="bg-linear-to-br from-yellow-400 via-yellow-500 to-yellow-600 py-20">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src="/Yungola mockup.jpg"
+        alt="Background"
+        fill
+        priority
+        className="object-cover object-center z-0 transform-gpu will-change-transform"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Text Section */}
           <div>
-              <h1 className="mb-3 inline-flex rounded-full bg-amber-900 px-4 py-1 text-sm font-medium text-yellow-100">
+            <h1 className="mb-3 inline-flex rounded-full bg-amber-900 px-4 py-1 text-sm font-medium text-yellow-100">
               Yungola Transport
             </h1>
-            <h2 className="text-4xl md:text-6xl font-bold text-amber-900 mb-6">
+
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Affordable vehicle ownership for hardworking drivers
             </h2>
-            <p className="text-lg text-amber-800 mb-8">
+
+            <p className="text-lg text-gray-200 mb-8">
               Small transport company helping operators in Ibadan and Lagos
               purchase keke, bike, and Corolla car options through a flexible
               hire purchase model.
             </p>
+
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/vehicles"
@@ -73,13 +90,15 @@ export const HeroSection = () => {
               </Link>
             </div>
           </div>
+
+          {/* Right Image stays */}
           <div className="hidden md:block">
             <Image
               src="/yungola_office.png"
               alt="Cars available for purchase"
-              className="rounded-2xl shadow-2xl"
               width={600}
               height={400}
+              className="rounded-2xl shadow-2xl"
             />
           </div>
         </div>
