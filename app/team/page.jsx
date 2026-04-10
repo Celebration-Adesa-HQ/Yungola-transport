@@ -11,13 +11,13 @@ const teamMembers = [
     bio: "Leads Yungola’s vision for making vehicle ownership and transport support more accessible, practical, and reliable for everyday customers.",
   },
   {
-    name: "Ojo Oluwaseun",
+    name: "Oluwaseun Ojo",
     role: "VP Operations",
     image: "/team/VP Operations.jpg",
     bio: "Oversees daily operations, service coordination, and internal processes to ensure customers receive smooth and timely support.",
   },
   {
-    name: "Olawole Olamide",
+    name: "Olamide Olawole",
     role: "Office Manager",
     image: "/team/Yungola Office Manager.jpg",
     bio: "Manages office administration, client coordination, and front-facing support that keeps the team responsive and organised.",
