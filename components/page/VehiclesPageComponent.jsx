@@ -224,7 +224,7 @@ export default function VehiclesPageComponent() {
       </section>
 
       {/* Rates Table */}
-      <section className="bg-white py-14">
+      <section className="bg-white py-14 hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -294,7 +294,7 @@ export default function VehiclesPageComponent() {
       </section>
 
       {/* Interactive Section */}
-      <section className="py-14">
+      <section className="py-14 hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-3xl font-black text-amber-900">
