@@ -77,12 +77,12 @@ const vehicleData = [
   },
   {
     icon: Car,
-    type: "Car",
+    type: "Ride-Only Vehicles",
     slug: "car",
     image: "/vehicles/corolla-yungola.png",
     brands: [
       {
-        name: "Toyota Corolla",
+        name: "Toyota",
         price: 9500000,
         image: "/vehicles/corolla-yungola.png",
       },
@@ -586,37 +586,29 @@ export default function VehiclesPageComponent() {
                   {vehicle.type}
                 </h3>
 
-                <p className="mt-2 font-semibold text-yellow-700">
-                  Starting from{" "}
-                  {formatCurrency(
-                    Math.min(...vehicle.brands.map((brand) => brand.price)),
-                  )}
-                </p>
-
-                <p className="mt-1 text-sm text-gray-600">
-                  Upfront: {vehicle.upfrontFrom} · Processing:{" "}
-                  {vehicle.processing} · Monthly from: {vehicle.monthlyFrom}
-                </p>
-
                 <p className="mt-4 max-w-3xl text-gray-700">
                   {vehicle.description}
                 </p>
 
-                <div className="mt-5">
-                  <h4 className="mb-2 text-sm font-bold text-amber-900">
-                    Available Brands
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {vehicle.brands.map((brand) => (
-                      <span
-                        key={brand.name}
-                        className="rounded-full border border-amber-200 bg-white px-3 py-1 text-sm text-amber-900"
-                      >
-                        {brand.name}
-                      </span>
-                    ))}
+                {/* {vehicle.type === "Ride-Only Vehicles" ? (
+                  ""
+                ) : (
+                  <div className="mt-5">
+                    <h4 className="mb-2 text-sm font-bold text-amber-900">
+                      Available Brands
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {vehicle.brands.map((brand) => (
+                        <span
+                          key={brand.name}
+                          className="rounded-full border border-amber-200 bg-white px-3 py-1 text-sm text-amber-900"
+                        >
+                          {brand.name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )} */}
 
                 <div className="mt-5">
                   <h4 className="mb-2 text-sm font-bold text-amber-900">

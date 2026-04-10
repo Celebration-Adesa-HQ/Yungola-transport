@@ -70,7 +70,7 @@ export const HeroSection = () => {
 
             <p className="text-lg text-gray-200 mb-8">
               Yungola transport company helping operators in Ibadan and Lagos
-              purchase keke, bike(motocycle), and car options through a flexible
+              purchase keke, bike(motocycle), and Ride-Only vehicles options through a flexible
               hire purchase model.
             </p>
 

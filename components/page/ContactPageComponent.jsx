@@ -33,7 +33,7 @@ const contactDetails = [
   {
     icon: Clock,
     title: "Working Hours",
-    content: "Mon – Sat: 9:00 AM – 5:00 PM",
+    content: "Mon – Fri: 9:00 AM – 5:00 PM",
   },
 ];
 

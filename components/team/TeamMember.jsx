@@ -28,7 +28,7 @@ const card = {
 
 const members = [
   {
-    name: "Okanlawon Olatunde",
+    name: "Olatunde Okanlawon",
     role: "CEO/Founder of Yungola transport",
     image: "/team/ceo-of-yungola.jpg",
     bio: "Leads Yungola’s vision for making vehicle ownership and transport support more accessible, practical, and reliable for everyday customers.",

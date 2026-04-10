@@ -80,14 +80,14 @@ const Footer = () => (
               <Mail className="h-4 w-4 mr-2" /> contact@yungolatransport.com
             </li>
             <li className="flex items-center">
-              <Clock className="h-4 w-4 mr-2" /> Mon – Sat: 9:00 AM – 5:00 PM
+              <Clock className="h-4 w-4 mr-2" /> Mon – Fri: 9:00 AM – 5:00 PM
             </li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-amber-800 mt-8 pt-8 text-center text-amber-300 text-sm">
-        <p>&copy; 2024 Yungola Transport. All rights reserved.</p>
+        <p>&copy; 2026 Yungola Transport. All rights reserved.</p>
       </div>
     </div>
   </footer>

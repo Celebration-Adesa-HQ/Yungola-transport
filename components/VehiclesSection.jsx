@@ -65,10 +65,6 @@ export default function VehiclesSection() {
 
                 <p className="text-gray-600 text-sm mb-4">{v.desc}</p>
 
-                <p className="text-yellow-700 font-bold text-lg mb-4">
-                  {v.price}
-                </p>
-
                 <div className="flex items-center text-yellow-600 font-semibold group-hover:translate-x-1 transition-transform">
                   Explore <ChevronRight className="h-5 w-5 ml-1" />
                 </div>

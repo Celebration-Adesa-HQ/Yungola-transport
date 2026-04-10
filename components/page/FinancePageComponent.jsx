@@ -22,11 +22,18 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+// Weekly durations: key = number of weeks, value = interest rate (%)
 const repairRates = {
-  3: 8,
+  1: 3,
+  2: 5,
+  3: 7,
+  4: 9,
   6: 12,
-  12: 18,
+  8: 15,
+  12: 20,
 };
+
+const weekOptions = [1, 2, 3, 4, 6, 8, 12];
 
 const requirements = ["Valid ID", "2 Passport Photos", "2 Guarantors"];
 
@@ -36,6 +43,10 @@ function formatCurrency(amount) {
     currency: "NGN",
     maximumFractionDigits: 0,
   }).format(amount);
+}
+
+function weekLabel(weeks) {
+  return weeks === 1 ? "1 week" : `${weeks} weeks`;
 }
 
 export default function FinancePageComponent() {
@@ -48,26 +59,26 @@ export default function FinancePageComponent() {
     phone: "",
     vehicleType: "",
     repairCost: "",
-    duration: "6",
+    duration: "4", // weeks
     description: "",
   });
 
   const repairCost = Number(repairForm.repairCost || 0);
-  const duration = Number(repairForm.duration || 6);
+  const duration = Number(repairForm.duration || 4); // in weeks
 
   const repairLoan = useMemo(() => {
     if (!repairCost || repairCost <= 0) return null;
 
-    const interestRate = repairRates[duration] ?? 12;
+    const interestRate = repairRates[duration] ?? 9;
     const totalInterest = (repairCost * interestRate) / 100;
     const totalAmount = repairCost + totalInterest;
-    const monthlyPayment = totalAmount / duration;
+    const weeklyPayment = totalAmount / duration;
 
     return {
       interestRate,
       totalInterest,
       totalAmount,
-      monthlyPayment,
+      weeklyPayment,
     };
   }, [repairCost, duration]);
 
@@ -93,7 +104,6 @@ export default function FinancePageComponent() {
     <div className="min-h-screen bg-amber-50">
       {/* Hero */}
       <section className="relative text-white overflow-hidden">
-        {/* Background Image */}
         <Image
           src="/Yungola mockup.jpg"
           alt="Background"
@@ -101,23 +111,17 @@ export default function FinancePageComponent() {
           priority
           className="object-cover object-center z-0"
         />
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-900/90 via-amber-800/80 to-yellow-600/70 z-10" />
-
-        {/* Content */}
         <div className="relative z-20 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="mb-3 inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-yellow-100">
               Repair Financing
             </p>
-
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
               Repair Financing
             </h1>
-
             <p className="mt-4 max-w-2xl text-base text-white/85 sm:text-lg">
-              Get your vehicle repaired now and repay in convenient monthly
+              Get your vehicle repaired now and repay in convenient weekly
               instalments with a simple approval process and competitive rates.
             </p>
           </div>
@@ -149,8 +153,8 @@ export default function FinancePageComponent() {
                 </h2>
               </div>
               <p className="text-sm leading-6 text-amber-700">
-                Choose a repayment duration that works for you and spread your
-                repair cost over manageable monthly payments.
+                Choose a repayment duration from 1 to 12 weeks and spread your
+                repair cost over manageable weekly payments.
               </p>
             </div>
 
@@ -182,7 +186,6 @@ export default function FinancePageComponent() {
               <CreditCard className="h-6 w-6 text-yellow-500" />
               <h2 className="text-xl font-bold text-amber-900">How It Works</h2>
             </div>
-
             <div className="grid gap-6 md:grid-cols-3">
               <div className="text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500">
@@ -196,7 +199,6 @@ export default function FinancePageComponent() {
                   request.
                 </p>
               </div>
-
               <div className="text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500">
                   <span className="text-lg font-bold text-amber-900">2</span>
@@ -209,7 +211,6 @@ export default function FinancePageComponent() {
                   terms.
                 </p>
               </div>
-
               <div className="text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500">
                   <span className="text-lg font-bold text-amber-900">3</span>
@@ -218,7 +219,7 @@ export default function FinancePageComponent() {
                   Repair and Repay
                 </h3>
                 <p className="text-sm text-amber-600">
-                  Fix your vehicle and repay in monthly instalments over your
+                  Fix your vehicle and repay in weekly instalments over your
                   selected duration.
                 </p>
               </div>
@@ -252,10 +253,7 @@ export default function FinancePageComponent() {
                     }
                   >
                     <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500">
-                      <SelectValue
-                        placeholder="Select vehicle type"
-                        className="text-black"
-                      />
+                      <SelectValue placeholder="Select vehicle type" />
                     </SelectTrigger>
                     <SelectContent className="bg-white text-black">
                       <SelectItem
@@ -302,28 +300,40 @@ export default function FinancePageComponent() {
                   <label className="mb-2 block font-medium text-amber-900">
                     Repayment Duration
                   </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {[3, 6, 12].map((months) => {
-                      const active = Number(repairForm.duration) === months;
-
+                  {/* Interest rate hint */}
+                  <p className="mb-3 text-xs text-amber-600">
+                    Interest rate varies by duration — shorter durations attract
+                    lower rates.
+                  </p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {weekOptions.map((weeks) => {
+                      const active = Number(repairForm.duration) === weeks;
+                      const rate = repairRates[weeks];
                       return (
                         <button
-                          key={months}
+                          key={weeks}
                           type="button"
                           onClick={() => {
                             setRepairForm({
                               ...repairForm,
-                              duration: String(months),
+                              duration: String(weeks),
                             });
                             setRepairFinanceCalculated(true);
                           }}
-                          className={`rounded-lg p-3 font-medium transition-colors ${
+                          className={`rounded-lg p-2 text-center transition-colors ${
                             active
                               ? "bg-yellow-500 text-amber-900"
                               : "bg-amber-100 text-amber-700 hover:bg-yellow-300"
                           }`}
                         >
-                          {months} months
+                          <span className="block text-sm font-semibold">
+                            {weekLabel(weeks)}
+                          </span>
+                          <span
+                            className={`block text-xs mt-0.5 ${active ? "text-amber-800" : "text-amber-500"}`}
+                          >
+                            {rate}% interest
+                          </span>
                         </button>
                       );
                     })}
@@ -344,7 +354,6 @@ export default function FinancePageComponent() {
                   <h3 className="mb-4 font-bold text-amber-900">
                     Payment Schedule
                   </h3>
-
                   <div className="rounded-2xl bg-yellow-50 p-6">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div className="rounded-lg bg-white p-4">
@@ -353,27 +362,26 @@ export default function FinancePageComponent() {
                           {formatCurrency(repairCost)}
                         </p>
                       </div>
-
                       <div className="rounded-lg bg-white p-4">
                         <p className="text-sm text-amber-600">Duration</p>
                         <p className="text-xl font-bold text-amber-900">
-                          {duration} months
+                          {weekLabel(duration)}
                         </p>
                       </div>
-
                       <div className="rounded-lg bg-white p-4">
                         <p className="text-sm text-amber-600">Interest Rate</p>
                         <p className="text-xl font-bold text-amber-900">
-                          {repairLoan.interestRate}% p.a.
+                          {repairLoan.interestRate}%
+                        </p>
+                        <p className="text-xs text-amber-500 mt-0.5">
+                          = {formatCurrency(repairLoan.totalInterest)} total
+                          interest
                         </p>
                       </div>
-
                       <div className="rounded-lg bg-white p-4">
-                        <p className="text-sm text-amber-600">
-                          Monthly Payment
-                        </p>
+                        <p className="text-sm text-amber-600">Weekly Payment</p>
                         <p className="text-xl font-bold text-yellow-700">
-                          {formatCurrency(repairLoan.monthlyPayment)}
+                          {formatCurrency(repairLoan.weeklyPayment)}
                         </p>
                       </div>
                     </div>
@@ -393,7 +401,6 @@ export default function FinancePageComponent() {
                       <Button asChild className="flex-1">
                         <Link href="/schedule">Apply for Repair Financing</Link>
                       </Button>
-
                       <Button asChild variant="outline" className="flex-1">
                         <Link href="/contact">Contact Us</Link>
                       </Button>
@@ -417,16 +424,13 @@ export default function FinancePageComponent() {
                   <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
                     <CheckCircle className="h-10 w-10 text-green-600" />
                   </div>
-
                   <h3 className="mb-2 text-2xl font-bold text-amber-900">
                     Request Submitted!
                   </h3>
-
                   <p className="mx-auto max-w-md text-amber-700">
                     Our team will review your repair financing request and
                     contact you shortly with the next steps.
                   </p>
-
                   <Button
                     type="button"
                     className="mt-6"
@@ -438,7 +442,7 @@ export default function FinancePageComponent() {
                         phone: "",
                         vehicleType: "",
                         repairCost: "",
-                        duration: "6",
+                        duration: "4",
                         description: "",
                       });
                     }}
@@ -456,10 +460,7 @@ export default function FinancePageComponent() {
                       required
                       value={repairForm.name}
                       onChange={(e) =>
-                        setRepairForm({
-                          ...repairForm,
-                          name: e.target.value,
-                        })
+                        setRepairForm({ ...repairForm, name: e.target.value })
                       }
                       placeholder="Enter your full name"
                       className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
@@ -485,7 +486,6 @@ export default function FinancePageComponent() {
                         className="border-amber-200 text-black placeholder:text-black focus-visible:ring-yellow-500"
                       />
                     </div>
-
                     <div>
                       <label className="mb-2 block font-medium text-amber-900">
                         Phone Number *
@@ -513,10 +513,7 @@ export default function FinancePageComponent() {
                       <Select
                         value={repairForm.vehicleType}
                         onValueChange={(value) =>
-                          setRepairForm({
-                            ...repairForm,
-                            vehicleType: value,
-                          })
+                          setRepairForm({ ...repairForm, vehicleType: value })
                         }
                       >
                         <SelectTrigger className="border-amber-200 focus:ring-yellow-500 text-black">
@@ -544,7 +541,6 @@ export default function FinancePageComponent() {
                         </SelectContent>
                       </Select>
                     </div>
-
                     <div>
                       <label className="mb-2 block font-medium text-amber-900">
                         Repair Cost (₦) *
@@ -572,39 +568,34 @@ export default function FinancePageComponent() {
                     <Select
                       value={repairForm.duration}
                       onValueChange={(value) =>
-                        setRepairForm({
-                          ...repairForm,
-                          duration: value,
-                        })
+                        setRepairForm({ ...repairForm, duration: value })
                       }
                     >
-                      <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500 ">
-                        <SelectValue
-                          placeholder="Select duration"
-                          className="text-black"
-                        />
+                      <SelectTrigger className="border-amber-200 text-black focus:ring-yellow-500">
+                        <SelectValue placeholder="Select duration" />
                       </SelectTrigger>
                       <SelectContent className="bg-white text-black">
-                        <SelectItem
-                          value="3"
-                          className="text-black hover:bg-yellow-300"
-                        >
-                          3 months
-                        </SelectItem>
-                        <SelectItem
-                          value="6"
-                          className="text-black hover:bg-yellow-300"
-                        >
-                          6 months
-                        </SelectItem>
-                        <SelectItem
-                          value="12"
-                          className="text-black hover:bg-yellow-300"
-                        >
-                          12 months
-                        </SelectItem>
+                        {weekOptions.map((weeks) => (
+                          <SelectItem
+                            key={weeks}
+                            value={String(weeks)}
+                            className="text-black hover:bg-yellow-300"
+                          >
+                            {weekLabel(weeks)} — {repairRates[weeks]}% interest
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
+                    {/* Live interest rate display */}
+                    {repairForm.duration && (
+                      <p className="mt-1.5 text-xs text-amber-600">
+                        Interest rate for{" "}
+                        {weekLabel(Number(repairForm.duration))}:{" "}
+                        <span className="font-semibold text-amber-800">
+                          {repairRates[Number(repairForm.duration)]}%
+                        </span>
+                      </p>
+                    )}
                   </div>
 
                   <div>
