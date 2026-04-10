@@ -69,8 +69,8 @@ export const HeroSection = () => {
             </h2>
 
             <p className="text-lg text-gray-200 mb-8">
-              Small transport company helping operators in Ibadan and Lagos
-              purchase keke, bike, and Corolla car options through a flexible
+              Yungola transport company helping operators in Ibadan and Lagos
+              purchase keke, bike(motocycle), and car options through a flexible
               hire purchase model.
             </p>
 
@@ -89,17 +89,6 @@ export const HeroSection = () => {
                 Schedule Visit
               </Link>
             </div>
-          </div>
-
-          {/* Right Image stays */}
-          <div className="hidden md:block">
-            <Image
-              src="/yungola_office.png"
-              alt="Cars available for purchase"
-              width={600}
-              height={400}
-              className="rounded-2xl shadow-2xl"
-            />
           </div>
         </div>
       </div>

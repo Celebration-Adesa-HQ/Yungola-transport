@@ -32,6 +32,7 @@ export const Navbar = () => {
 
   const navItems = [
     { page: "/", label: "Home" },
+    { page: "/about", label: "About" },
     { page: "/vehicles", label: "Vehicles" },
     { page: "/schedule", label: "Schedule" },
     { page: "/finance", label: "Repair Finance" },

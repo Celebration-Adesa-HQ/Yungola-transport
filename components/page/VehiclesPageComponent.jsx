@@ -77,7 +77,7 @@ const vehicleData = [
   },
   {
     icon: Car,
-    type: "Toyota Corolla (2010)",
+    type: "Car",
     slug: "car",
     image: "/vehicles/corolla-yungola.png",
     brands: [
@@ -292,6 +292,16 @@ export default function VehiclesPageComponent() {
           </div>
         </div>
       </section>
+
+      <div className="my-6 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-900">
+        <span className="font-bold">Requirements:</span>
+        {requirements.map((item) => (
+          <span key={item} className="inline-flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4 text-yellow-600" />
+            {item}
+          </span>
+        ))}
+      </div>
 
       {/* Interactive Section */}
       <section className="py-14 hidden">

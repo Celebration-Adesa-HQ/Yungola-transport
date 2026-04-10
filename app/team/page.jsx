@@ -1,3 +1,4 @@
+import TeamMember from "@/components/team/TeamMember";
 import { generateSEO } from "@/lib/seo";
 import { Briefcase, ShieldCheck, Users, User } from "lucide-react";
 import Image from "next/image";
@@ -126,49 +127,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <h2 className="text-3xl font-black text-amber-900">
-              Leadership Team
-            </h2>
-            <p className="mt-2 text-gray-600">
-              The people guiding our operations, customer experience, and
-              long-term growth.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="group rounded-2xl border border-amber-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
-              >
-                <div className="relative mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-amber-100">
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="h-24 w-24 rounded-full object-cover"
-                    />
-                  ) : (
-                    <User className="h-12 w-12 text-amber-700" />
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  {member.name}
-                </h3>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-yellow-700">
-                  {member.role}
-                </p>
-                <p className="mt-4 text-sm leading-6 text-gray-600">
-                  {member.bio}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <  TeamMember />
 
       {/* Closing Section */}
       <section className="bg-white py-14">

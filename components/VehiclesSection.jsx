@@ -21,7 +21,7 @@ const vehicles = [
   },
   {
     icon: Car,
-    name: "Toyota Corolla",
+    name: "Car",
     desc: "Reliable sedan for ride-hailing and personal use",
     price: "₦4,500,000",
     image: "/vehicles/corolla-yungola.png",
