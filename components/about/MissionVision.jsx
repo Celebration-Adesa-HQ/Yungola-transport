@@ -7,13 +7,13 @@ export default function MissionVision({ BRAND, FadeSection }) {
   const items = [
     {
       label: "Mission",
-      icon: <Target size={32} color={BRAND.gold} />,
+      icon: <Target size={40} color={BRAND.gold} />,
       title: "Our Mission",
       body: "Operating and providing flexible and affordable vehicle solutions that empower commercial riders and first-time vehicle owners to build self-sustaining transport businesses.",
     },
     {
       label: "Vision",
-      icon: <Lightbulb size={32} color={BRAND.gold} />,
+      icon: <Lightbulb size={40} color={BRAND.gold} />,
       title: "Our Vision",
       body: "Become Africa's leading transport company recognised for transforming lives through exceptional customer service and unwavering integrity.",
     },
@@ -23,7 +23,7 @@ export default function MissionVision({ BRAND, FadeSection }) {
     <section
       style={{
         background: BRAND.darkBrown,
-        padding: "80px 16px",
+        padding: "100px 24px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -35,7 +35,7 @@ export default function MissionVision({ BRAND, FadeSection }) {
           top: "50%",
           left: "50%",
           transform: "translate(-50%,-50%)",
-          fontSize: "22vw",
+          fontSize: "20vw",
           fontWeight: 900,
           color: "rgba(255,255,255,0.02)",
           whiteSpace: "nowrap",
@@ -52,37 +52,41 @@ export default function MissionVision({ BRAND, FadeSection }) {
           maxWidth: 1100,
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: 24,
+          gridTemplateColumns: "1fr 1fr",
+          gap: 60,
           position: "relative",
           zIndex: 1,
         }}
       >
         {items.map((item, i) => (
-          <FadeSection key={i} direction="up" delay={i * 0.15}>
+          <FadeSection
+            key={i}
+            direction={i === 0 ? "left" : "right"}
+            delay={i * 0.2}
+          >
             <motion.div
               whileHover={{
-                y: -6,
-                boxShadow: "0 20px 50px rgba(0,0,0,0.25)",
+                y: -8,
+                boxShadow: "0 24px 60px rgba(0,0,0,0.3)",
               }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.3 }}
               style={{
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(245,166,35,0.2)",
-                borderRadius: 6,
-                padding: "28px 20px",
+                borderRadius: 4,
+                padding: "48px 40px",
               }}
             >
-              <div style={{ marginBottom: 16 }}>{item.icon}</div>
+              <div style={{ fontSize: 40, marginBottom: 24 }}>{item.icon}</div>
 
               <p
                 style={{
                   color: BRAND.gold,
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: 700,
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.25em",
                   textTransform: "uppercase",
-                  marginBottom: 8,
+                  marginBottom: 12,
                 }}
               >
                 {item.label}
@@ -90,10 +94,10 @@ export default function MissionVision({ BRAND, FadeSection }) {
 
               <h3
                 style={{
-                  fontSize: 20,
+                  fontSize: 26,
                   fontWeight: 700,
                   color: "#FFFDF5",
-                  marginBottom: 12,
+                  marginBottom: 20,
                 }}
               >
                 {item.title}
@@ -101,9 +105,9 @@ export default function MissionVision({ BRAND, FadeSection }) {
 
               <p
                 style={{
-                  fontSize: 14,
-                  lineHeight: 1.6,
-                  color: "rgba(255,253,245,0.7)",
+                  fontSize: 16,
+                  lineHeight: 1.8,
+                  color: "rgba(255,253,245,0.65)",
                 }}
               >
                 {item.body}
@@ -112,28 +116,6 @@ export default function MissionVision({ BRAND, FadeSection }) {
           </FadeSection>
         ))}
       </div>
-
-      {/* desktop layout */}
-      <style jsx>{`
-        @media (min-width: 768px) {
-          section {
-            padding: 100px 24px;
-          }
-
-          div[style*="grid"] {
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-          }
-
-          h3 {
-            font-size: 26px;
-          }
-
-          p {
-            font-size: 16px;
-          }
-        }
-      `}</style>
     </section>
   );
 }
