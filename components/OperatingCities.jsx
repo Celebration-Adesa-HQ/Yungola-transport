@@ -84,7 +84,7 @@ export default function OperatingCities() {
     {
       icon: CarFront,
       title: "Ride-hailing ready",
-      text: "Corolla hire purchase remains the flagship option for professional urban drivers.",
+      text: "Car hire purchase remains the flagship option for professional urban drivers.",
     },
     {
       icon: Bike,

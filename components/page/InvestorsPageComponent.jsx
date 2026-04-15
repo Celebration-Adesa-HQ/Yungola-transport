@@ -597,7 +597,7 @@ export default function InvestorsPageComponent() {
           >
             <motion.div variants={fadeUp} className="mb-8 text-center">
               <h2 className="text-3xl font-black text-amber-900">
-                Financial Snapshot (2023)
+                Financial Snapshot
               </h2>
               <p className="mt-2 text-gray-600">
                 A quick overview of key performance indicators.

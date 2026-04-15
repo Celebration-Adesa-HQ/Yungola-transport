@@ -116,7 +116,7 @@ export default function ServiceSection() {
             href="/investors"
             className="flex items-center gap-2 text-yellow-400 font-bold text-sm sm:text-base hover:gap-3 transition"
           >
-            View Prospectus <ArrowRight className="w-4 h-4" />
+            View Investments <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.section>
 
@@ -139,7 +139,7 @@ export default function ServiceSection() {
             href="/finance"
             className="flex items-center gap-2 mt-4 text-yellow-400 font-bold text-sm sm:text-base hover:gap-3 transition"
           >
-            View Prospectus <ArrowRight className="w-4 h-4" />
+            View Auto-Finance <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.section>
 

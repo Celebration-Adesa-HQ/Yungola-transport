@@ -188,7 +188,7 @@ export const HeroSection = () => {
               variants={fadeUp}
               className="text-xl md:text-4xl font-bold text-white mb-6 leading-tight"
             >
-              Affordable ownership of cleaner transport vehicles for hardworking
+              Affordable ownership of transport vehicles for hardworking
               riders
             </motion.h2>
 
