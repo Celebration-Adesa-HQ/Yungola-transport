@@ -7,14 +7,14 @@ import Image from "next/image";
 const vehicles = [
   {
     icon: Truck,
-    name: "Keke (Tricycle)",
-    desc: "Perfect for commercial transport in busy cities",
+    name: "Tricycle (CNG/Electric)",
+    desc: "Efficient commercial transport option with CNG and electric variants for busy city routes",
     price: "₦850,000",
     image: "/vehicles/keke-yungola.png",
   },
   {
     icon: Bike,
-    name: "Motorcycle",
+    name: "Electric Motorcycle",
     desc: "Fast, affordable and easy to maintain",
     price: "₦350,000",
     image: "/vehicles/motocycle-yungola.png",
@@ -46,30 +46,32 @@ export default function VehiclesSection() {
               key={v.name}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
-                 <Link key={v.name} href="/vehicles" className="block">
-              <div className="relative h-48 bg-amber-100 ">
-                <Image
-                  src={v.image}
-                  alt={v.name}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  width={800}
-                  height={400}
-                />
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center mb-2">
-                  <v.icon className="h-6 w-6 text-yellow-600 mr-2" />
-                  <h3 className="text-xl font-bold text-gray-900">{v.name}</h3>
+              <Link key={v.name} href="/vehicles" className="block">
+                <div className="relative h-48 bg-amber-100 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={v.image}
+                    alt={v.name}
+                    fill
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
 
-                <p className="text-gray-600 text-sm mb-4">{v.desc}</p>
+                <div className="p-6">
+                  <div className="flex items-center mb-2">
+                    <v.icon className="h-6 w-6 text-yellow-600 mr-2" />
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {v.name}
+                    </h3>
+                  </div>
 
-                <div className="flex items-center text-yellow-600 font-semibold group-hover:translate-x-1 transition-transform">
-                  Explore <ChevronRight className="h-5 w-5 ml-1" />
+                  <p className="text-gray-600 text-sm mb-4">{v.desc}</p>
+
+                  <div className="flex items-center text-yellow-600 font-semibold group-hover:translate-x-1 transition-transform">
+                    Explore <ChevronRight className="h-5 w-5 ml-1" />
+                  </div>
                 </div>
-              </div>
-          </Link>
+              </Link>
             </div>
           ))}
         </div>
