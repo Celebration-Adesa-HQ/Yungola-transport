@@ -65,6 +65,7 @@ const timeSlots = [
   "3:30 PM",
   "4:00 PM",
   "4:30 PM",
+  "5:00 PM",
 ];
 
 const vehicleOptions = [
@@ -176,7 +177,7 @@ function SelectDropdown({ value, onChange, options, placeholder, error }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl border border-amber-100 bg-white shadow-xl shadow-amber-100/50"
+            className="absolute z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-xl border border-amber-100 bg-white shadow-xl shadow-amber-100/50"
           >
             {options.map((opt, i) => (
               <motion.li
