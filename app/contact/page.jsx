@@ -3,11 +3,23 @@ import { generateSEO } from "@/lib/seo";
 
 // Page-specific metadata
 export const metadata = generateSEO({
-  title: "Contact Yungola Transport | Car Hire Lagos",
+  title: "Contact Yungola Transport | Vehicle Hire Purchase Support",
   description:
-    "Reach out to Yungola Transport to book a car hire, bus rental, or airport pickup in Lagos. Our team is ready to assist.",
-  keywords: ["contact Yungola", "car hire Lagos", "bus rental Lagos", "airport pickup Lagos"],
+    "Contact Yungola Transport for vehicle hire purchase, ride-to-own options, repair financing, and customer support in Lagos and Ibadan.",
+  keywords: [
+    "contact Yungola Transport",
+    "Yungola Transport Lagos",
+    "Yungola Transport Ibadan",
+    "vehicle hire purchase Nigeria",
+    "hire purchase support Lagos",
+    "ride to own car Nigeria",
+    "CNG tricycle finance",
+    "electric motorcycle finance",
+    "vehicle repair financing Nigeria",
+    "Youngola Group contact",
+  ],
   url: "https://yungolatransport.com/contact",
+  image: "https://yungolatransport.com/logo.png",
 });
 
 export default function Page() {

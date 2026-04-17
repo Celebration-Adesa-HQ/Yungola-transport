@@ -50,14 +50,19 @@ const values = [
 export const metadata = generateSEO({
   title: "Meet the Team | Yungola Transport",
   description:
-    "Discover the leadership and team behind Yungola Transport. Our dedicated professionals ensure smooth, reliable vehicle hire and customer support in Lagos.",
+    "Meet the leadership and operations team behind Yungola Transport. Learn more about the people driving vehicle hire purchase, transport support, and customer service in Lagos and Ibadan.",
   keywords: [
     "Yungola Transport team",
-    "car hire Lagos",
-    "leadership",
-    "vehicle rental Nigeria",
+    "Youngola Group team",
+    "Yungola Transport leadership",
+    "vehicle finance company Nigeria",
+    "transport financing team",
+    "hire purchase company Lagos",
+    "hire purchase company Ibadan",
+    "vehicle support team Nigeria",
   ],
   url: "https://yungolatransport.com/team",
+  image: "https://yungolatransport.com/logo.png",
 });
 
 export default function TeamPage() {
@@ -127,7 +132,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-     <  TeamMember />
+      <TeamMember />
 
       {/* Closing Section */}
       <section className="bg-white py-14">
