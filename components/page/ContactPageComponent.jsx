@@ -128,48 +128,56 @@ export default function ContactPageComponent() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitError("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSubmitError("");
 
-    const result = contactSchema.safeParse(form);
+  const result = contactSchema.safeParse(form);
 
-    if (!result.success) {
-      const fieldErrors = result.error.flatten().fieldErrors;
-      setErrors({
-        name: fieldErrors.name?.[0] || "",
-        email: fieldErrors.email?.[0] || "",
-        phone: fieldErrors.phone?.[0] || "",
-        message: fieldErrors.message?.[0] || "",
-      });
-      return;
-    }
+  if (!result.success) {
+    const fieldErrors = result.error.flatten().fieldErrors;
+    setErrors({
+      name: fieldErrors.name?.[0] || "",
+      email: fieldErrors.email?.[0] || "",
+      phone: fieldErrors.phone?.[0] || "",
+      message: fieldErrors.message?.[0] || "",
+    });
+    return;
+  }
 
-    try {
-      setIsSubmitting(true);
+  try {
+    setIsSubmitting(true);
+    setErrors({});
 
-      // Standby integration point for your email sender later
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(result.data),
-      });
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(result.data),
+    });
 
-      if (!response.ok) {
-        throw new Error("Unable to submit your message right now.");
+    const data = await response.json();
+
+    if (!response.ok) {
+      if (data?.errors) {
+        setErrors(data.errors);
       }
 
-      setFormSubmitted(true);
-      setForm(initialForm);
-      setErrors({});
-    } catch (error) {
-      setSubmitError(error.message || "Something went wrong.");
-    } finally {
-      setIsSubmitting(false);
+      throw new Error(data?.message || "Unable to submit your message right now.");
     }
-  };
+
+    setFormSubmitted(true);
+    setForm(initialForm);
+    setErrors({});
+  } catch (error) {
+    setSubmitError(
+      error instanceof Error ? error.message : "Something went wrong."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-yellow-50">

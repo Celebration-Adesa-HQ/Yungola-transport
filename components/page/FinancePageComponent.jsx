@@ -33,29 +33,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import Image from "next/image";
-
-// ─── Zod Schema ───────────────────────────────────────────────────────────────
-
-const repairFinanceSchema = z.object({
-  name: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z
-    .string()
-    .min(7, "Phone number is too short")
-    .regex(/^[+\d\s\-()]+$/, "Phone number contains invalid characters"),
-  vehicleType: z.enum(["motorcycle", "tricycle", "car"], {
-    required_error: "Please select a vehicle type",
-  }),
-  repairCost: z
-    .string()
-    .min(1, "Repair cost is required")
-    .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-      message: "Repair cost must be a positive number",
-    }),
-  description: z
-    .string()
-    .min(20, "Please provide at least 20 characters describing the repair"),
-});
+import { repairFinanceSchema } from "@/lib/schema/zod";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -64,15 +42,26 @@ const requirements = ["Valid ID", "2 Passport Photos", "2 Guarantors"];
 // ─── Email Sender Integration ─────────────────────────────────────────────────
 
 async function sendRepairFinanceEmail(data) {
-  // TODO: plug in your email sender here
-  // const res = await fetch("/api/repair-finance", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
-  // if (!res.ok) throw new Error("Failed to send email");
-  await new Promise((resolve) => setTimeout(resolve, 1200));
-}
+  const res = await fetch("/api/repair-finance", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) {
+    if (result?.errors) {
+      throw { type: "validation", errors: result.errors };
+    }
+
+    throw new Error(result?.message || "Failed to send email");
+  }
+
+  return result;
+}``
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 

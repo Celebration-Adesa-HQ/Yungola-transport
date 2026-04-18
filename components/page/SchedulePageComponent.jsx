@@ -19,24 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Image from "next/image";
-
-// ─── ZOD SCHEMA ────────────────────────────────────────────────────────────────
-const schema = z.object({
-  name: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z
-    .string()
-    .min(10, "Phone number must be at least 10 digits")
-    .regex(/^[+\d\s\-()]+$/, "Please enter a valid phone number"),
-  location: z.string().min(1, "Please select a preferred location"),
-  vehicleType: z.string().optional(),
-  date: z
-    .date({ required_error: "Please select a preferred date" })
-    .refine((d) => !isSunday(d), "We are closed on Sundays")
-    .refine((d) => !isBefore(d, startOfToday()), "Please select a future date"),
-  time: z.string().min(1, "Please choose a preferred time"),
-  message: z.string().optional(),
-});
+import { scheduleSchema } from "@/lib/schema/zod";
 
 // ─── DATA ───────────────────────────────────────────────────────────────────────
 const offices = [
@@ -67,9 +50,9 @@ const timeSlots = [
 ];
 
 const vehicleOptions = [
-  { value: "tricycle", label: "Tricycle (Keke)" },
-  { value: "motorcycle", label: "Motorcycle" },
-  { value: "car", label: "Car (Corolla)" },
+  { value: "tricycle", label: "Tricycle (CNG/Electric)" },
+  { value: "motorcycle", label: "Electric Motorcycle" },
+  { value: "car", label: "Car" },
 ];
 
 // ─── ANIMATION VARIANTS ─────────────────────────────────────────────────────────
@@ -213,40 +196,47 @@ export default function SchedulePageComponent() {
     control,
     watch,
     reset,
-    formState: { errors, isSubmitting },
+    setError,
+    formState: { errors, isSubmitting, },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(scheduleSchema),
   });
 
-  const watchedDate = watch("date");
 
-  const onSubmit = async (data) => {
-    // ── Standby integration point ──────────────────────────────────────────────
-    // TODO: Replace the block below with your email sender integration.
-    // `data` contains all validated fields: name, email, phone, location,
-    // vehicleType, date, time, message.
-    //
-    // Example (EmailJS):
-    //   await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-    //     to_name: data.name,
-    //     to_email: data.email,
-    //     date: format(data.date, "PPP"),
-    //     time: data.time,
-    //     ...data,
-    //   });
-    //
-    // Example (Resend / custom API route):
-    //   await fetch("/api/send-appointment", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ ...data, date: format(data.date, "PPP") }),
-    //   });
-    // ──────────────────────────────────────────────────────────────────────────
+const onSubmit = async (data) => {
+  try {
+    const response = await fetch("/api/send-appointment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-    await new Promise((r) => setTimeout(r, 800)); // remove when wiring real sender
+    const result = await response.json();
+
+    if (!response.ok) {
+      if (result?.errors) {
+        Object.entries(result.errors).forEach(([field, message]) => {
+          if (message) {
+            setError(field, {
+              type: "server",
+              message: String(message),
+            });
+          }
+        });
+        return;
+      }
+
+      throw new Error(result?.message || "Failed to send appointment request");
+    }
+
     setSubmittedData(data);
     setFormSubmitted(true);
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const handleReset = () => {
     setFormSubmitted(false);
