@@ -29,7 +29,7 @@ const item = {
 
 export default function ServiceSection() {
   return (
-    <main className="pt-20 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto bg-amber-950 text-white">
+    <main className="pt-20 pb-16 px-4 sm:px-6 md:px-12 lg:px-24 mx-auto  bg-amber-950 text-white">
       {/* HERO */}
       <section className="relative w-full overflow-hidden rounded-2xl md:rounded-4xl bg-amber-900 mb-16 md:mb-24 min-h-[420px] md:min-h-[500px] flex items-center">
         <div className="absolute inset-0 z-0">
