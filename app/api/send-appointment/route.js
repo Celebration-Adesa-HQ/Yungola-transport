@@ -64,7 +64,7 @@ export async function POST(req) {
 
     const adminEmail = await resend.emails.send({
       from: "Appointments <contact@yungolatransport.com>",
-      to: ["ojinguluc@gmail.com"],
+      to: ["contact@yungolatransport.com"],
       replyTo: email,
       subject: `New Appointment Request - ${name}`,
       html: appointmentAdminTemplate({

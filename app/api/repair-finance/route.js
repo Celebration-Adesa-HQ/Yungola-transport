@@ -41,7 +41,7 @@ export async function POST(req) {
 
     const adminEmail = await resend.emails.send({
       from: "Finance <contact@yungolatransport.com>",
-      to: ["ojinguluc@gmail.com"],
+      to: ["contact@yungolatransport.com"],
       replyTo: email,
       subject: `Repair Finance Request - ${name}`,
       html: repairFinanceAdminTemplate({
