@@ -1,9 +1,23 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbulb, Target } from "lucide-react";
 
 export default function MissionVision({ BRAND, FadeSection }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   const items = [
     {
       label: "Mission",
@@ -28,7 +42,6 @@ export default function MissionVision({ BRAND, FadeSection }) {
         overflow: "hidden",
       }}
     >
-      {/* background word */}
       <div
         style={{
           position: "absolute",
@@ -50,7 +63,6 @@ export default function MissionVision({ BRAND, FadeSection }) {
         YUNGOLA
       </div>
 
-      {/* grid */}
       <div
         style={{
           maxWidth: 1100,
@@ -90,10 +102,7 @@ export default function MissionVision({ BRAND, FadeSection }) {
                 }}
               >
                 <div style={{ marginBottom: "clamp(16px, 3vw, 24px)" }}>
-                  <Icon
-                    size={window?.innerWidth < 640 ? 30 : 40}
-                    color={BRAND.gold}
-                  />
+                  <Icon size={isMobile ? 30 : 40} color={BRAND.gold} />
                 </div>
 
                 <p
