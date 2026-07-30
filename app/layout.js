@@ -49,8 +49,9 @@ export const organizationJsonLd = {
     "Yungola Transport provides flexible hire purchase plans for CNG tricycles, electric motorcycles, and ride-hailing cars in Lagos and Ibadan.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "5, Olaniye Street",
+    streetAddress: "Plot 75, Block 3B, Ogunnusi Road, Grammar School Bus Stop, Ojodu",
     addressLocality: "Lagos",
+    addressRegion: "Lagos State",
     addressCountry: "NG",
   },
   areaServed: ["Lagos", "Ibadan"],

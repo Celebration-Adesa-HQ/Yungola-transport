@@ -23,7 +23,7 @@ const contactDetails = [
   {
     icon: MapPin,
     title: "Office Address",
-    content: "5, Ayanleye Street, Ogba, Lagos State",
+    content: "Plot 75, Block 3B, Ogunnusi Road, Grammar School Bus Stop, Ojodu, Lagos State",
   },
   {
     icon: Phone,

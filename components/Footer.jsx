@@ -69,9 +69,11 @@ const Footer = () => (
         <div>
           <h4 className="text-yellow-500 font-semibold mb-4">Contact</h4>
           <ul className="space-y-2 text-amber-200">
-            <li className="flex items-center">
-              <MapPin className="h-4 w-4 mr-2" /> 5, Ayanleye Street, Ogba,
-              Lagos State
+            <li className="flex items-start">
+              <MapPin className="h-4 w-4 mr-2 mt-1 shrink-0" />
+              <span>
+                Plot 75, Block 3B, Ogunnusi Road, Grammar School Bus Stop, Ojodu, Lagos State
+              </span>
             </li>
             <li className="flex items-center">
               <Phone className="h-4 w-4 mr-2" /> +234 907 1518 988 YUNGOLA

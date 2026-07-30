@@ -26,7 +26,7 @@ const offices = [
   {
     id: "lagos",
     name: "Lagos Office",
-    address: "5, Ayanleye Street, Ogba, Lagos State",
+    address: "Plot 75, Block 3B, Ogunnusi Road, Grammar School Bus Stop, Ojodu, Lagos State",
     phone: "+234 907 1518 988",
   },
 ];
